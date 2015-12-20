@@ -17,7 +17,7 @@ loader=SoundLoader(sim)
 default_tile=Tile(sound=loader.load_sound('footstep'))
 impassable_tile=lambda: Tile(sound=loader.load_sound('impassable'), impassable=True)# need lambda for defaultdict, see map.py
 
-Map = Map(default_tile=default_tile, impassable_tile=impassable_tile)
+Map = Map(x=10, y=10, default_tile=default_tile, impassable_tile=impassable_tile)
 Player = Player(Map)
 
 Window.push_handlers(Player)
