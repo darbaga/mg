@@ -30,15 +30,19 @@ class Map(object):
     Generally a single conceptual "level" will only have one map instance.
     """
 
-    def __init__(self, x, y):
+    def __init__(self, x=0, y=0, map_dict=None):
         """Args:
           x, y: The maximum length before walls appear.
+          map_dict: An externally supplied map dictionary.
         """
         self.x = x
         self.y = y
 
-        self._map = defaultdict(lambda: Tile(sound='impassable', impassable=True))
-        self._populate_map()
+        if not map_dict:
+            self._map = defaultdict(lambda: Tile(sound='impassable', impassable=True))
+            self._populate_map()
+        else:
+            self._map = map_dict
 
     def _populate_map(self):
         for i in range(self.x):
