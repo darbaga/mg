@@ -30,16 +30,20 @@ class Map(object):
     Generally a single conceptual "level" will only have one map instance.
     """
 
-    def __init__(self, x=0, y=0, map_dict=None):
+    def __init__(self, x=0, y=0, default_tile=None, impassable_tile=None, map_dict=None):
         """Args:
           x, y: The maximum length before walls appear.
+          default_tile, impassable_tile: Tiles which will be placed as defaults in the map.
           map_dict: An externally supplied map dictionary.
         """
         self.x = x
         self.y = y
 
+        self.default_tile = default_tile
+        self.impassable_tile = impassable_tile
+
         if not map_dict:
-            self._map = defaultdict(lambda: Tile(sound='impassable', impassable=True))
+            self._map = defaultdict(self.impassable_tile)
             self._populate_map()
         else:
             self._map = map_dict
@@ -47,7 +51,8 @@ class Map(object):
     def _populate_map(self):
         for i in range(self.x):
             for j in range(self.y):
-                self._map[(i, j)] = Tile(sound='footstep')
+                self._map[(i, j)] = self.default_tile
+
     def get_tile(self, coordinates=(0, 0)):
         """Get the tile from the map
         Args:
