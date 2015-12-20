@@ -25,3 +25,5 @@ class Player(object):
             self.move((self.position[0], self.position[1]+1))
         elif symbol == key.DOWN:
             self.move((self.position[0], self.position[1]-1))
+        elif symbol==key.C:
+            print(self.position)
