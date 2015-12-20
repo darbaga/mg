@@ -18,7 +18,7 @@ class Tile(object):
         self.sound = sound
         self.impassable = impassable
 
-    def collide(self):
+    def collide(self, obj):
         """Called when something touches the tile.
         Generally supposed to be called with super (when subclassing the Tile class)
         """
