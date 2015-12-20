@@ -6,7 +6,7 @@ class Player(object):
     """
 #todo: Turn current walking into tick-based walking
 
-    def __inin__(self, Map):
+    def __init__(self, Map):
         self.Map = Map
         self.position = (0, 0)
 
