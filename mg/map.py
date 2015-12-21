@@ -59,3 +59,7 @@ class Map(object):
           coordinates: Coordinates must be a tuple of x, y integers.
         """
         return self._map[coordinates]
+    def __getitem__(self, pos):
+        return self._map[pos]
+    def __setitem__(self, key, val):
+        self._map[key]=val
